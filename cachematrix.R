@@ -1,15 +1,20 @@
-## Put comments here that give an overall description of what your
-## functions do
+# Caching the Inverse of a Matrix
 
-## Write a short comment describing this function
-
+# Cache the matrix, and calculate its inverse matrix
 makeCacheMatrix <- function(x = matrix()) {
-
+    cachedMatrix <<- x
+    invertedMatrix <<- solve(x)
 }
 
-
-## Write a short comment describing this function
-
+# Print the inverted matrix of x:
+# **If x has been cached, print the cached matrix directly.
+# **Otherwise, update the cache, calculate and print the new inverted matrix.
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+    if (exists("cachedMatrix") && identical(x, cachedMatrix)) {
+        message("CACHED:")
+        return(invertedMatrix)
+    }
+    makeCacheMatrix(x)
+    message("NEW:")
+    invertedMatrix
 }
