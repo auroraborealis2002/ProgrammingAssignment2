@@ -20,7 +20,7 @@ cacheSolve <- function(x, ...) {
     inverted <- x$getInvert()
     if (!is.null(inverted)) {
         message("CACHED:")
-        return(invertedMatrix)
+        return(inverted)
     }
     data <- x$get()
     calcInvert <- solve(data)
